@@ -1,17 +1,20 @@
-import PrimarySearchAppBar from '@/components/AppBar/AppBar';
+import ResponsiveAppBar from '@/components/AppBar/BarWithMenu';
+import SwipeableTextMobileStepper from '@/components/Carousel/Carousel';
 import { Box, Stack } from '@mui/material';
 
 const HomePage = () => {
   return (
     <Box sx={{ maxWidth:'lg' }}>
       <Stack gap={0} my={0}>
-       <Box style={{height:'44px', backgroundColor:"black", cursor: "pointer", fontSize: "14px", display:"flex", justifyContent:"center", alignItems:"center"}}>
+       {/* <Box style={{height:'44px', backgroundColor:"black", cursor: "pointer", fontSize: "14px", display:"flex", justifyContent:"center", alignItems:"center"}}>
         <span style={{ color: 'white' }}>
           FREE SHIPPING ON ORDERS OVER 300
         </span>
-       </Box>
-       <PrimarySearchAppBar />
-       <div style={{height:'320px', backgroundColor:"#37CDBE"}}>products</div>
+       </Box> */}
+       <ResponsiveAppBar />
+       <Box>
+         <SwipeableTextMobileStepper />
+      </Box>
        <div style={{height:'420px', backgroundColor:"#3D4451"}}>sales</div>
        <div style={{height:'460px', backgroundColor:"#FFFFFF"}}>company</div>
        <div style={{height:'240px', backgroundColor:"#3ABFF8"}}>Items</div>
