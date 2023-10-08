@@ -1,9 +1,12 @@
 import ResponsiveAppBar from '@/components/AppBar/BarWithMenu';
 import SwipeableTextMobileStepper from '@/components/Carousel/Carousel';
 import LabTabs from '@/components/Tabs/Tabs';
+import { mockup } from '@/data/data';
 import { Box, Stack, Typography } from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2';
 
 const HomePage = () => {
+  const arr = mockup.products
   return (
     <Box sx={{ maxWidth:'xxl' }}>
       <Stack gap={0} my={0}>
@@ -25,7 +28,18 @@ const HomePage = () => {
         </Typography>
       </Box>
       <LabTabs />
-       <div style={{height:'420px', backgroundColor:"#3D4451"}}>sales</div>
+       <Box sx={{ flexGrow: 1, p: 2 }}>
+                <Grid
+                    container
+                    spacing={2}
+                >
+                    {arr.map((product) => (
+                        <Grid key={product.id} {...{ xs: 6, sm: 4, md: 3, lg: 2 }} minHeight={160}>
+                                <Card name={product.name} price={product.price} URL={product.URL[0]}></Card>
+                        </Grid>
+                    ))}
+                </Grid>
+            </Box>
        <div style={{height:'460px', backgroundColor:"#FFFFFF"}}>company</div>
        <div style={{height:'240px', backgroundColor:"#3ABFF8"}}>Items</div>
        <div style={{height:'650px', backgroundColor:"#36D399"}}>Communications</div>
