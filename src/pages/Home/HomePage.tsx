@@ -4,9 +4,19 @@ import LabTabs from '@/components/Tabs/Tabs';
 import { mockup } from '@/data/data';
 import { Box, Stack, Typography } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
+import { driver } from "driver.js";
+import "driver.js/dist/driver.css";
 
 const HomePage = () => {
-  const arr = mockup.products
+  const arr = mockup.productCategory
+  const driverObj = driver();
+  driverObj.highlight({
+    element: "#some-element",
+    popover: {
+      title: "Title",
+      description: "Description"
+    }
+  });
   return (
     <Box sx={{ maxWidth:'xxl' }}>
       <Stack gap={0} my={0}>
@@ -19,7 +29,7 @@ const HomePage = () => {
        <Box>
          <SwipeableTextMobileStepper />
       </Box>
-      <Box sx={{ maxWidth:'xxl', paddingBottom:'4rem', paddingTop:'4rem', display: 'flex', flexDirection:'column', alignItems:'center'}}>
+      <Box id="some-element" sx={{ maxWidth:'xxl', paddingBottom:'4rem', paddingTop:'4rem', display: 'flex', flexDirection:'column', alignItems:'center'}}>
         <Typography variant="h1" gutterBottom align="center" width="50%">
         ALLMAX PROFESSIONAL GRADE SUPPLEMENTS
         </Typography>
@@ -33,9 +43,9 @@ const HomePage = () => {
                     container
                     spacing={2}
                 >
-                    {arr.map((product) => (
-                        <Grid key={product.id} {...{ xs: 6, sm: 4, md: 3, lg: 2 }} minHeight={160}>
-                                <Card name={product.name} price={product.price} URL={product.URL[0]}></Card>
+                    {arr.map((category) => (
+                        <Grid key={category.id} {...{ xs: 6, sm: 4, md: 3, lg: 2 }} minHeight={120}>
+                                <img width='100%' src={category.URL}></img>
                         </Grid>
                     ))}
                 </Grid>
